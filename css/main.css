@@ -263,7 +263,7 @@ section {
     margin-top: -3rem; 
     margin-bottom: -30rem;
     margin-left: 200px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
     position: relative;
     z-index: 3;
 }
@@ -274,7 +274,7 @@ section {
     height: auto;
     display: block;
     margin: 0 auto;
-    margin-left: 215px;
+    margin-left: 225px;
     transition: transform 0.2s ease;
     position: relative;
     z-index: 3;
