@@ -1,0 +1,167 @@
+/* ============================
+   ABOUT SECTION - MODULAR STYLES
+   ============================ */
+
+.about-section {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 4rem 4rem 4rem 260px !important;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Watermark logo background - top left */
+.about-watermark-bg {
+    position: absolute;
+    top: -5rem;
+    left: -5rem;
+    width: 28rem;
+    height: 28rem;
+    opacity: 0.08 !important;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.about-watermark-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+}
+
+.about-section .section-title {
+    font-family: 'Playfair Display', 'Times New Roman', serif !important;
+    font-size: 6rem !important;
+    font-weight: 400 !important;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+.about-content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Left side - Expertise */
+.about-left {
+    position: relative;
+    padding-right: 3.5rem;
+    flex-shrink: 0;
+    width: 280px;
+}
+
+.expertise-section {
+    margin-top: 0;
+}
+
+.expertise-title {
+    font-family: 'Playfair Display', 'Times New Roman', serif !important;
+    font-size: 1.8rem;
+    font-weight: 400 !important;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.expertise-title span {
+    font-weight: 700 !important;
+}
+
+.expertise-items {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.expertise-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.expertise-item:hover {
+    transform: translateY(-5px);
+}
+
+.expertise-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+}
+
+.expertise-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.expertise-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+/* Vertical divider line */
+.about-divider {
+    width: 1px;
+    background-color: #000;
+    margin: 0 4rem;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+/* Right side - Content */
+.about-right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    flex: 1;
+}
+
+.about-tagline {
+    font-family: 'Playfair Display', 'Times New Roman', serif !important;
+    font-size: 2.2rem;
+    font-weight: 400 !important;
+    line-height: 1.3;
+    margin-bottom: 3rem;
+}
+
+.about-tagline strong {
+    font-weight: 700 !important;
+}
+
+.about-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-description p {
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: #333;
+}
+
+.company-name {
+    font-weight: 700;
+}
+
+/* Remove any right watermarks */
+.about-watermark-right {
+    display: none !important;
+}

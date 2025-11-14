@@ -1,0 +1,393 @@
+/* ============================
+   RESPONSIVE DESIGN
+   ============================ */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 180px;
+    }
+    
+    .sidebar {
+        width: var(--sidebar-width);
+        padding: 2rem 0 2rem 2rem;
+    }
+    
+    .logo img {
+        width: 70px;
+    }
+    
+    .nav-menu {
+        gap: 1.8rem;
+    }
+    
+    .nav-menu li a {
+        font-size: 0.8rem;
+    }
+    
+    .hero-title {
+        font-size: 5rem;
+        letter-spacing: 1rem;
+    }
+    
+    .hero-title-image {
+        max-width: 850px;
+        width: 90%;
+        margin-bottom: 0.3rem;
+        margin-left: 90px;
+    }
+    
+    .hero-subtitle-image {
+        max-width: 700px;
+        width: 85%;
+        margin-left: 90px;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    section {
+        padding: 3rem 2rem 3rem calc(var(--sidebar-width) + 40px);
+    }
+    
+    .hero-section {
+        padding: 3rem 2rem !important;
+    }
+    
+    /* About Section Responsive */
+    .about-section {
+        padding: 4rem 2rem 4rem calc(var(--sidebar-width) + 40px) !important;
+    }
+    
+    .about-watermark-bg {
+        width: 28rem;
+        height: 28rem;
+        top: -4rem;
+        left: -4rem;
+    }
+    
+    .about-left {
+        width: 200px;
+        padding-right: 2rem;
+    }
+    
+    .about-divider {
+        margin: 0 2.5rem;
+    }
+    
+    .about-tagline {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        background: rgba(75, 75, 75, 0.98);
+    }
+    
+    .sidebar.hidden {
+        transform: translateY(-100%);
+    }
+    
+    .logo {
+        margin-bottom: 0;
+        padding: 0;
+    }
+    
+    .logo img {
+        width: 45px;
+    }
+    
+    .nav-menu {
+        flex-direction: row;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-grow: 0;
+        align-items: center;
+    }
+    
+    .nav-menu li a {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+    
+    .social-icons {
+        flex-direction: row;
+        gap: 1rem;
+        margin-top: 0;
+        padding-bottom: 0;
+    }
+    
+    .social-icon img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* Individual icon sizes - Mobile - CUSTOMIZE HERE */
+    .icon-call {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .icon-email {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .icon-telegram {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    section {
+        padding: 3rem 1.5rem !important;
+        min-height: auto;
+    }
+    
+    .hero-section {
+        padding: 4rem 1.5rem !important;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 0.5rem;
+    }
+    
+    .hero-title-image {
+        max-width: 500px;
+        width: 95%;
+        margin-bottom: 0.3rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-subtitle-image {
+        max-width: 420px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 0.5rem;
+        padding: 0 2rem;
+    }
+    
+    .hero-subtitle::before,
+    .hero-subtitle::after {
+        width: 50px;
+    }
+    
+    .hero-subtitle::before {
+        left: -70px;
+    }
+    
+    .hero-subtitle::after {
+        right: -70px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* About Section Mobile */
+    .about-section {
+        padding: 3rem 1.5rem !important;
+    }
+    
+    .about-watermark-bg {
+        width: 20rem;
+        height: 20rem;
+        top: -3rem;
+        left: -3rem;
+    }
+    
+    .about-section .section-title {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+    
+    .about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .about-left {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    .about-divider {
+        display: none;
+    }
+    
+    .expertise-section {
+        margin-top: 1rem;
+    }
+    
+    .expertise-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .expertise-items {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    .about-tagline {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .about-description p {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 0.8rem 1rem;
+    }
+    
+    .logo img {
+        width: 35px;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .nav-menu li a {
+        font-size: 0.65rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .social-icons {
+        gap: 0.8rem;
+    }
+    
+    .social-icon img {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Individual icon sizes - Small Mobile - CUSTOMIZE HERE */
+    .icon-call {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    .icon-email {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    .icon-telegram {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    section {
+        padding: 2rem 1rem !important;
+    }
+    
+    .hero-section {
+        padding: 3rem 1rem !important;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        letter-spacing: 0.3rem;
+    }
+    
+    .hero-title-image {
+        max-width: 350px;
+        width: 95%;
+        margin-bottom: 0.2rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-subtitle-image {
+        max-width: 300px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 0.3rem;
+        padding: 0 1.5rem;
+    }
+    
+    .hero-subtitle::before,
+    .hero-subtitle::after {
+        width: 30px;
+    }
+    
+    .hero-subtitle::before {
+        left: -50px;
+    }
+    
+    .hero-subtitle::after {
+        right: -50px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    /* About Section Small Mobile */
+    .about-section {
+        padding: 2.5rem 1rem !important;
+    }
+    
+    .about-watermark-bg {
+        width: 15rem;
+        height: 15rem;
+        top: -2rem;
+        left: -2rem;
+    }
+    
+    .about-section .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .expertise-items {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .expertise-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .about-tagline {
+        font-size: 1.2rem;
+    }
+    
+    .about-description p {
+        font-size: 0.85rem;
+    }
+}

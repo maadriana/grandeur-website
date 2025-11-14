@@ -1,0 +1,585 @@
+/* ============================
+   CSS RESET & BASE STYLES
+   ============================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --color-dark: #1a1a1a;
+    --color-white: #ffffff;
+    --color-light-gray: #f5f5f5;
+    --color-accent-blue: #00a8e8;
+    --color-accent-green: #7cb342;
+    --color-accent-orange: #ff6b35;
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    --font-heading: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+    
+    /* Spacing */
+    --spacing-small: 1rem;
+    --spacing-medium: 2rem;
+    --spacing-large: 4rem;
+    
+    /* Sidebar width - WIDER like prototype */
+    --sidebar-width: 200px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============================
+   SIDEBAR NAVIGATION
+   ============================ */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: rgba(54, 54, 54, 0.98);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem 0 2.5rem 2.5rem;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.logo {
+    margin-bottom: -1rem;
+    padding: 0;
+}
+
+.logo img {
+    width: 110px;
+    height: auto;
+    display: block;
+}
+
+.nav-menu {
+    list-style: none;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 0;
+}
+
+.nav-menu li a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 400;
+    white-space: nowrap;
+    display: block;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: var(--color-white);
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 1.8rem;
+    margin-top: auto;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.social-icon {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.85;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin-left: -9px; 
+}
+
+/* Individual icon sizes - CUSTOMIZE HERE */
+.icon-call {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+.icon-email {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.icon-telegram {
+    width: 37px !important;
+    height: 37px !important;
+}
+
+.social-icon:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* ============================
+   MAIN CONTENT LAYOUT
+   ============================ */
+
+.main-content {
+    margin-left: 0;
+    width: 100%;
+}
+
+section {
+    min-height: 100vh;
+    padding: 4rem 4rem 4rem 260px;
+    position: relative;
+}
+
+/* ============================
+   TYPOGRAPHY
+   ============================ */
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-transform: lowercase;
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* ============================
+   HERO SECTION - WITH PARALLAX BACKGROUND
+   ============================ */
+
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem !important;
+    
+    /* ============================================================
+       BACKGROUND SETUP FOR PARALLAX (Globe image)
+       ============================================================ */
+    background-color: #1a1a1a;  /* Dark grey fallback */
+    background-image: 
+        linear-gradient(
+            to bottom,
+            rgba(26, 26, 26, 0) 0%,
+            rgba(26, 26, 26, 0.3) 50%,
+            rgba(26, 26, 26, 0.8) 80%,
+            rgba(26, 26, 26, 1) 100%
+        ),
+        url('../assets/images/img_bg_3.jpeg');  /* Change to your globe image path */
+    background-size: cover;
+    background-position: center top;  /* Will be changed by JavaScript */
+    background-repeat: no-repeat;
+    background-attachment: scroll;  /* IMPORTANT: Must be 'scroll' for parallax! */
+}
+
+/* Dark gradient extension at bottom */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;  /* Covers bottom 40% of viewport */
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(26, 26, 26, 0.5) 30%,
+        rgba(26, 26, 26, 0.9) 70%,
+        #1a1a1a 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;  /* Above gradient */
+    position: relative;
+}
+
+.hero-title {
+    font-size: 8rem;
+    font-weight: 300;
+    letter-spacing: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Times New Roman', serif;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 3;
+}
+
+/* Hero Images */
+.hero-title-image {
+    max-width: 1100px;
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: -3rem; 
+    margin-bottom: -30rem;
+    margin-left: 200px;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-subtitle-image {
+    max-width: 1000px;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-left: 215px;
+    transition: transform 0.2s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    letter-spacing: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding: 0 3rem;
+    z-index: 3;
+}
+
+.hero-subtitle::before,
+.hero-subtitle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 1px;
+    background-color: var(--color-white);
+}
+
+.hero-subtitle::before {
+    left: -120px;
+}
+
+.hero-subtitle::after {
+    right: -120px;
+}
+
+.globe-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 0;
+}
+
+/* ============================
+   ABOUT SECTION
+   ============================ */
+
+.about-section {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 4rem 4rem 4rem 260px !important;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Watermark logo background - top left */
+.about-watermark-bg {
+    position: absolute;
+    top: -5rem;
+    left: -5rem;
+    width: 35rem;
+    height: 35rem;
+    opacity: 0.04;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.about-watermark-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+}
+
+.about-section .section-title {
+    font-family: 'Times New Roman', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.about-content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Left side - Expertise */
+.about-left {
+    position: relative;
+    padding-right: 3.5rem;
+    flex-shrink: 0;
+    width: 280px;
+}
+
+.expertise-section {
+    margin-top: 0;
+}
+
+.expertise-title {
+        font-family: 'Playfair Display', 'Times New Roman', serif;
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .expertise-title span {
+        font-weight: 700;
+    }
+
+.expertise-items {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.expertise-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.expertise-item:hover {
+    transform: translateY(-5px);
+}
+
+.expertise-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+}
+
+.expertise-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.expertise-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+/* Vertical divider line */
+.about-divider {
+    width: 1px;
+    background-color: #000;
+    margin: 0 4rem;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+/* Right side - Content */
+.about-right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    flex: 1;
+}
+
+ .about-tagline {
+        font-family: 'Playfair Display', 'Times New Roman', serif;
+        font-size: 2.2rem;
+        font-weight: 400;
+        line-height: 1.3;
+        margin-bottom: 3rem;
+    }
+    .about-tagline strong {
+        font-weight: 700;
+    }
+
+.about-description {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-description p {
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: #333;
+}
+
+.company-name {
+    font-weight: 700;
+}
+
+/* Smooth transitions for all about elements */
+.about-section {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.about-content {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.about-tagline {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+}
+
+.about-description p {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
+}
+
+/* Hover effects with smooth transitions */
+.expertise-item {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+}
+
+.expertise-item:hover {
+    transform: translateY(-8px) scale(1.05);
+}
+
+.expertise-icon {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.expertise-item:hover .expertise-icon {
+    transform: rotate(5deg);
+}
+
+/* Divider subtle animation */
+.about-divider {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.about-section:hover .about-divider {
+    opacity: 0.7;
+}
+
+/* Subtle scale on section hover */
+.about-watermark-bg {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+}
+
+/* ============================
+   CORE VALUES SECTION
+   ============================ */
+
+.core-values-section {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+/* ============================
+   SERVICES SECTION
+   ============================ */
+
+.services-section {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+/* ============================
+   PARTNERS SECTION
+   ============================ */
+
+.partners-section {
+    background-color: var(--color-white);
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+
+.footer-section {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+/* ============================================================
+   PARALLAX CUSTOMIZATION NOTES
+   ============================================================
+   
+   HERO BACKGROUND PARALLAX:
+   - Controlled by JavaScript (parallax.js line 25)
+   - Current speed: 50% (0.5)
+   - Change line 25: const bgParallax = scrolled * 0.5;
+   
+   GRADIENT COLORS:
+   - Dark grey: #1a1a1a
+   - Adjust opacity: rgba(26, 26, 26, X) where X = 0.0 to 1.0
+   
+   GRADIENT HEIGHT:
+   - Line 202: height: 40vh;
+   - Change to 30vh (shorter) or 50vh (longer)
+   
+   BACKGROUND IMAGE:
+   - Line 189: url('../assets/images/img_bg_3.jpeg')
+   - Change to your globe image path
+   ============================================================ */
