@@ -4,9 +4,50 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
+    // ============================================================
+    // FIXED WATERMARK WITH IMAGE SWITCH
+    // ============================================================
+    const aboutWatermark = document.querySelector('.about-watermark-bg');
+    const valuesWatermark = document.querySelector('.values-watermark-bg');
+    
+    if (aboutWatermark) {
+        // Make about watermark fixed
+        aboutWatermark.style.position = 'fixed';
+        aboutWatermark.style.top = '-5rem';
+        aboutWatermark.style.left = '-5rem';
+        aboutWatermark.style.zIndex = '999';
+    }
+    
+    // Hide values watermark (we'll use about watermark for both)
+    if (valuesWatermark) {
+        valuesWatermark.style.display = 'none';
+    }
+    
     // Parallax scroll effect
     function parallaxScroll() {
         const scrolled = window.pageYOffset;
+        
+        // ============================================================
+        // WATERMARK IMAGE SWITCH (black → white)
+        // ============================================================
+        const aboutWatermark = document.querySelector('.about-watermark-bg');
+        const watermarkImg = aboutWatermark ? aboutWatermark.querySelector('img') : null;
+        
+        if (watermarkImg) {
+            const aboutSectionForSwitch = document.querySelector('.about-section');
+            const valuesSectionForSwitch = document.querySelector('.values-section');
+            
+            if (aboutSectionForSwitch && valuesSectionForSwitch) {
+                const valuesTop = valuesSectionForSwitch.offsetTop;
+                
+                // Switch to white logo when entering values section
+                if (scrolled >= valuesTop - 200) {  // 200px before values section
+                    watermarkImg.src = 'assets/images/logo.png';  // White logo
+                } else {
+                    watermarkImg.src = 'assets/images/logo1.png';  // Black logo
+                }
+            }
+        }
         
         // Hero parallax effect
         const heroSection = document.querySelector('.hero-section');
@@ -22,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const heroBackground = heroSection.querySelector('::before');
             if (heroSection) {
                 // Move background DOWN (positive value = downward movement)
-                const bgParallax = scrolled * 0.5;  // 0.5 = 50% speed (adjust this!)
+                const bgParallax = scrolled * 0.8;  // 0.5 = 50% speed (adjust this!)
                 heroSection.style.backgroundPosition = `center ${bgParallax}px`;
             }
             
@@ -47,10 +88,39 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // About section parallax effects
         const aboutSection = document.querySelector('.about-section');
+        const valuesSection = document.querySelector('.values-section');
+        
         if (aboutSection) {
             const aboutRect = aboutSection.getBoundingClientRect();
             const aboutTop = aboutRect.top;
             const windowHeight = window.innerHeight;
+            
+            // ============================================================
+            // WATERMARK FADE EFFECT (Fades out at 30% scroll in About, fades back in for Values)
+            // ============================================================
+            const aboutWatermark = aboutSection.querySelector('.about-watermark-bg');
+            if (aboutWatermark && valuesSection) {
+                const scrollProgress = Math.abs(aboutTop) / aboutRect.height;
+                const valuesRect = valuesSection.getBoundingClientRect();
+                const valuesTop = valuesRect.top;
+                
+                // Check if we're in the Values section
+                if (valuesTop <= windowHeight * 0.5) {
+                    // Fade in for Values section (smooth transition)
+                    const valueFadeProgress = Math.min(1, (windowHeight - valuesTop) / (windowHeight * 0.3));
+                    aboutWatermark.style.opacity = 0.08 * valueFadeProgress;
+                } else if (scrollProgress <= 0.3) {
+                    // Visible from 0% to 30% scroll in About
+                    aboutWatermark.style.opacity = 0.08;
+                } else if (scrollProgress > 0.3 && scrollProgress <= 0.5) {
+                    // Fade out from 30% to 50% in About
+                    const fadeProgress = (scrollProgress - 0.3) / 0.2;
+                    aboutWatermark.style.opacity = 0.08 * (1 - fadeProgress);
+                } else {
+                    // Hidden between About (50%) and Values sections
+                    aboutWatermark.style.opacity = 0;
+                }
+            }
             
             // Only apply parallax when section is in view
             if (aboutTop < windowHeight && aboutTop > -aboutRect.height) {
@@ -58,22 +128,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 const centerOffset = aboutTop + (aboutRect.height / 2) - (windowHeight / 2);
                 
                 // ============================================================
-                // BACKGROUND IMAGE PARALLAX (img_bg_3.jpeg)
+                // NO BACKGROUND PARALLAX - About has white background only
                 // ============================================================
-                const sectionTop = aboutSection.offsetTop;
-                const parallaxOffset = (scrolled - sectionTop) * 0.5;  // 0.5 = 50% speed (adjust this!)
-                aboutSection.style.backgroundPosition = `center ${parallaxOffset}px`;
                 
                 // ============================================================
-                // WATERMARK LOGO PARALLAX - VERTICAL FLOAT (Option 2 Active)
+                // WATERMARK LOGO PARALLAX - VERTICAL FLOAT
                 // ============================================================
                 const watermark = aboutSection.querySelector('.parallax-watermark');
                 if (watermark) {
                     const translateY = centerOffset * 0.08;  // Smooth vertical movement
-                    const opacity = Math.max(0.3, Math.min(1, 0.7 + (centerOffset * 0.0002)));
+                    // Keep transform for float effect, but position is already fixed
                     watermark.style.transform = `translateY(${translateY}px)`;
-                    watermark.style.opacity = opacity;
-                    watermark.style.transition = 'transform 0.4s ease-out, opacity 0.4s ease-out';
+                    watermark.style.transition = 'transform 0.4s ease-out';
                 }
                 
                 // Parallax for left side (expertise) - moves slower
@@ -112,6 +178,54 @@ document.addEventListener('DOMContentLoaded', function() {
                     aboutSection.style.transform = 'translateY(20px)';
                 }
                 aboutSection.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            }
+        }
+        
+        // ============================================================
+        // VALUES SECTION PARALLAX (img_bg_4.png)
+        // ============================================================
+        if (valuesSection) {
+            const valuesRect = valuesSection.getBoundingClientRect();
+            const valuesTop = valuesRect.top;
+            const windowHeight = window.innerHeight;
+            
+            // Only apply parallax when section is in view
+            if (valuesTop < windowHeight && valuesTop > -valuesRect.height) {
+                // Calculate parallax intensity
+                const centerOffset = valuesTop + (valuesRect.height / 2) - (windowHeight / 2);
+                
+                // Background Image Parallax
+                const valuesSectionTop = valuesSection.offsetTop;
+                const valuesParallaxOffset = (scrolled - valuesSectionTop) * 0.9;  // 0.5 = 50% speed
+                valuesSection.style.backgroundPosition = `center ${valuesParallaxOffset - 115}px`;
+                
+                // Watermark stays in place (NO parallax on watermark)
+                // Only content moves
+                
+                // Parallax for left side (core values) - moves slower
+                const valuesLeftElements = valuesSection.querySelectorAll('.parallax-slow');
+                valuesLeftElements.forEach(element => {
+                    const translateY = centerOffset * 0.12;
+                    element.style.transform = `translateY(${translateY}px)`;
+                    element.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                });
+                
+                // Parallax for right side (mission/vision) - moves at normal speed
+                const valuesRightElements = valuesSection.querySelectorAll('.parallax-normal');
+                valuesRightElements.forEach(element => {
+                    const translateY = centerOffset * 0.06;
+                    element.style.transform = `translateY(${translateY}px)`;
+                    element.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                });
+                
+                // Fade in effect
+                const fadeInThreshold = windowHeight * 0.75;
+                if (valuesTop < fadeInThreshold) {
+                    valuesSection.style.opacity = '1';
+                } else {
+                    valuesSection.style.opacity = '0.5';
+                }
+                valuesSection.style.transition = 'opacity 0.6s ease';
             }
         }
         

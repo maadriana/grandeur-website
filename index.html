@@ -13,6 +13,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/sections/about.css">
+    <link rel="stylesheet" href="css/sections/values.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -27,6 +28,7 @@
         <ul class="nav-menu">
             <li><a href="#home">HOME</a></li>
             <li><a href="#about">WHO WE ARE</a></li>
+            <li><a href="#values">CORE VALUES</a></li>
             <li><a href="#services">PRODUCTS</a></li>
             <li><a href="#mission">SERVICES</a></li>
             <li><a href="#portfolio">PORTFOLIO</a></li>
@@ -61,8 +63,8 @@
 
         <!-- About Section -->
         <section id="about" class="about-section">
-            <!-- Watermark Logo Background -->
-            <div class="about-watermark-bg parallax-watermark">
+            <!-- Watermark Logo Background (Black logo for white background) -->
+            <div class="about-watermark-bg">
                 <img src="assets/images/logo1.png" alt="GM Watermark">
             </div>
             
@@ -106,11 +108,59 @@
             </div>
         </section>
 
-        <!-- Core Values Section -->
-        <section id="mission" class="core-values-section">
-            <h2 class="section-subtitle">where we bridge markets, empower people, and inspire growth</h2>
+        <!-- Core Values & Mission/Vision Section -->
+        <section id="values" class="values-section">
+            <!-- Watermark logo background (White logo for dark background) -->
+            <div class="values-watermark-bg">
+                <img src="assets/images/logo.png" alt="Grandeur International">
+            </div>
+            
+            <!-- Tagline at top -->
+            <div class="values-tagline">
+                <p>where we bridge markets, <strong>empower people, and inspire growth</strong></p>
+            </div>
+            
+            <!-- Main content container -->
             <div class="values-content">
-                <!-- Values content will be added -->
+                <!-- Left side - Core Values -->
+                <div class="values-left">
+                    <h2 class="values-left-title">our<br><strong>core values</strong></h2>
+                    
+                    <ul class="values-list">
+                        <li class="parallax-slow"><span class="value-initial">G</span>oal Oriented</li>
+                        <li class="parallax-slow"><span class="value-initial">R</span>esilient</li>
+                        <li class="parallax-slow"><span class="value-initial">A</span>ccountable</li>
+                        <li class="parallax-slow"><span class="value-initial">N</span>avigable</li>
+                        <li class="parallax-slow"><span class="value-initial">D</span>ata Driven</li>
+                        <li class="parallax-slow"><span class="value-initial">E</span>xcellence</li>
+                        <li class="parallax-slow"><span class="value-initial">U</span>nited</li>
+                        <li class="parallax-slow"><span class="value-initial">R</span>esponsible</li>
+                    </ul>
+                </div>
+                
+                <!-- Vertical divider line -->
+                <div class="values-divider"></div>
+                
+                <!-- Right side - Mission and Vision -->
+                <div class="values-right">
+                    <!-- Mission -->
+                    <div class="mission-box parallax-normal">
+                        <h3 class="mission-title">our<br><strong>mission</strong></h3>
+                        <div class="mission-content">
+                            <p><strong>Grandeur International Marketing Corporation</strong> mission is to become one of the leading distributor, capitalizing on global opportunities and fostering growth through innovative and creative solutions that provide a competitive edge across all channels of distribution and markets, delivering trusted products to meet evolving customer needs.</p>
+                            <div class="quote-icon">"</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Vision -->
+                    <div class="vision-box parallax-normal">
+                        <h3 class="vision-title">our<br><strong>vision</strong></h3>
+                        <div class="vision-content">
+                            <p><strong>Grandeur International Marketing Corporation</strong> is committed to redefining the retail, trade and distribution landscape by offering carefully-selected high quality and competitive products with market research and analysis providing transparency, open communication, responsiveness and creative solutions to our partners, and to 'Bridge the Gap' across all Distribution Channels.</p>
+                            <div class="quote-icon">"</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 

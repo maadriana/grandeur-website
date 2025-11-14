@@ -1,0 +1,387 @@
+/* ============================
+   CORE VALUES & MISSION/VISION SECTION
+   ============================ */
+
+.values-section {
+    background-color: #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 6rem 4rem 6rem 260px !important;
+    min-height: 100vh;
+    overflow: hidden;
+    
+    /* ============================================================
+       BACKGROUND IMAGE SETUP FOR PARALLAX (img_bg_4.jpeg)
+       ============================================================ */
+    background-image: url('../../assets/images/img_bg_4.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;  /* IMPORTANT: Must be 'scroll' for parallax! */
+}
+
+/* ============================================================
+   GRADIENT TRANSITION FROM ABOUT SECTION (white to dark)
+   ============================================================ */
+.values-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25vh;  /* Top 25% gradient transition */
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,                    /* Pure white (from about section) */
+        rgba(240, 240, 240, 1) 8%,     /* Very light grey */
+        rgba(200, 200, 200, 1) 18%,    /* Light grey */
+        rgba(150, 150, 150, 0.9) 30%,  /* Medium grey */
+        rgba(100, 100, 100, 0.7) 45%,  /* Grey */
+        rgba(60, 60, 60, 0.5) 65%,     /* Dark grey */
+        rgba(40, 40, 40, 0.3) 80%,     /* Very dark grey */
+        transparent 100%               /* Clear to show background */
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ============================================================
+   GRADIENT EXTENSION AT BOTTOM (extends background image)
+   ============================================================ */
+.values-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40vh;  /* Bottom 40% gradient extension */
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(30, 30, 30, 0.3) 20%,
+        rgba(30, 30, 30, 0.6) 50%,
+        rgba(30, 30, 30, 0.9) 80%,
+        #1e1e1e 100%          /* Solid dark at bottom */
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ============================================================
+   WATERMARK LOGO - TOP LEFT (logo.png for black background)
+   SAME POSITION AS ABOUT SECTION
+   ============================================================ */
+.values-watermark-bg {
+    position: absolute;
+    top: -5rem;
+    left: -5rem;
+    width: 28rem;
+    height: 28rem;
+    opacity: 0.08 !important;  /* Always visible */
+    z-index: 2;
+    pointer-events: none;
+}
+
+.values-watermark-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);  /* White logo for dark background */
+}
+
+/* ============================================================
+   TAGLINE AT TOP
+   ============================================================ */
+.values-tagline {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 5rem;
+}
+
+.values-tagline p {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.4;
+    color: #ffffff;
+    text-align: center;
+}
+
+.values-tagline strong {
+    font-weight: 700;
+}
+
+/* ============================================================
+   MAIN CONTENT LAYOUT
+   ============================================================ */
+.values-content {
+    display: flex;
+    max-width: 1400px;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    gap: 5rem;
+}
+
+/* ============================================================
+   LEFT SIDE - CORE VALUES
+   ============================================================ */
+.values-left {
+    flex-shrink: 0;
+    width: 350px;
+}
+
+.values-left-title {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 3rem;
+}
+
+.values-left-title strong {
+    font-weight: 700;
+    display: block;
+}
+
+/* Values List */
+.values-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.values-list li {
+    font-family: 'Segoe UI';
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.2;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.values-list li:hover {
+    transform: translateX(10px);
+    color: #d4af37;
+}
+
+.value-initial {
+    font-weight: 00;
+    font-size: 2rem;
+}
+
+/* ============================================================
+   VERTICAL DIVIDER LINE
+   ============================================================ */
+.values-divider {
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.3) 20%,
+        rgba(255, 255, 255, 0.3) 80%,
+        transparent
+    );
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+/* ============================================================
+   RIGHT SIDE - MISSION AND VISION
+   ============================================================ */
+.values-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Mission Box */
+.mission-box {
+    position: relative;
+}
+
+.mission-title {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.mission-title strong {
+    font-weight: 700;
+    display: block;
+}
+
+.mission-content {
+    position: relative;
+    padding-right: 5rem;
+}
+
+.mission-content p {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: justify;
+}
+
+.mission-content strong {
+    font-weight: 700;
+}
+
+/* Quote Icon */
+.quote-icon {
+    position: absolute;
+    top: -1rem;
+    right: 0;
+    font-family: 'Times New Roman', serif;
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.15);
+    line-height: 1;
+    font-weight: 700;
+}
+
+/* Vision Box */
+.vision-box {
+    position: relative;
+}
+
+.vision-title {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.vision-title strong {
+    font-weight: 700;
+    display: block;
+}
+
+.vision-content {
+    position: relative;
+    padding-right: 5rem;
+}
+
+.vision-content p {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: justify;
+}
+
+.vision-content strong {
+    font-weight: 700;
+}
+
+/* ============================================================
+   PARALLAX CLASSES
+   ============================================================ */
+.parallax-slow {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.parallax-normal {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 1024px) {
+    .values-section {
+        padding: 4rem 3rem 4rem 160px !important;
+    }
+    
+    .values-content {
+        gap: 3rem;
+    }
+    
+    .values-left {
+        width: 280px;
+    }
+    
+    .values-tagline p {
+        font-size: 1.6rem;
+    }
+    
+    .values-left-title,
+    .mission-title,
+    .vision-title {
+        font-size: 2rem;
+    }
+    
+    .values-list li {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .values-section {
+        padding: 3rem 2rem !important;
+    }
+    
+    .values-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .values-left {
+        width: 100%;
+    }
+    
+    .values-divider {
+        width: 100%;
+        height: 1px;
+        margin: 2rem 0;
+    }
+    
+    .values-tagline {
+        margin-bottom: 3rem;
+    }
+    
+    .values-tagline p {
+        font-size: 1.4rem;
+    }
+    
+    .quote-icon {
+        font-size: 5rem;
+    }
+}
+
+/* ============================================================
+   HOVER EFFECTS & ANIMATIONS
+   ============================================================ */
+.mission-box:hover,
+.vision-box:hover {
+    transform: translateY(-5px);
+}
+
+.values-watermark-bg {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+}
+
+/* ============================================================
+   NOTES:
+   - Background: img_bg_4.png with parallax effect
+   - Watermark: logo1.png (white version for black background)
+   - Watermark stays in place (no parallax on watermark)
+   - Content has parallax (controlled by JavaScript)
+   - After this section, no more watermarks
+   ============================================================ */

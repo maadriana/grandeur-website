@@ -18,8 +18,8 @@
     --color-accent-orange: #ff6b35;
     
     /* Typography */
-    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-    --font-heading: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-heading: 'Playfair Display', 'Georgia', 'Garamond', 'Times New Roman', serif;
     
     /* Spacing */
     --spacing-small: 1rem;
@@ -210,7 +210,7 @@ section {
             rgba(26, 26, 26, 0.8) 80%,
             rgba(26, 26, 26, 1) 100%
         ),
-        url('../assets/images/img_bg_3.jpeg');  /* Change to your globe image path */
+        url('../assets/images/img_bg_3.jpeg');  /* Globe background */
     background-size: cover;
     background-position: center top;  /* Will be changed by JavaScript */
     background-repeat: no-repeat;
@@ -263,7 +263,7 @@ section {
     margin-top: -3rem; 
     margin-bottom: -30rem;
     margin-left: 200px;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
     position: relative;
     z-index: 3;
 }
@@ -274,7 +274,7 @@ section {
     height: auto;
     display: block;
     margin: 0 auto;
-    margin-left: 225px;
+    margin-left: 215px;
     transition: transform 0.2s ease;
     position: relative;
     z-index: 3;
