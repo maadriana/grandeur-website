@@ -279,6 +279,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 servicesSection.style.transition = 'opacity 0.6s ease';
             }
         }
+        
+        // ============================================================
+        // PARTNERSHIP SECTION PARALLAX (img_bg_5.png)
+        // ============================================================
+        const partnershipSection = document.querySelector('.partnership-section');
+        if (partnershipSection) {
+            const partnershipRect = partnershipSection.getBoundingClientRect();
+            const partnershipTop = partnershipRect.top;
+            const windowHeight = window.innerHeight;
+            
+            // Fade in content
+            const partnershipContent = partnershipSection.querySelector('.partnership-content');
+            if (partnershipContent && partnershipTop < windowHeight * 0.8) {
+                partnershipContent.classList.add('fade-in');
+            }
+            
+            // Background parallax effect (same as values section)
+            if (partnershipTop < windowHeight && partnershipTop > -partnershipRect.height) {
+                const partnershipSectionTop = partnershipSection.offsetTop;
+                const partnershipParallaxOffset = (scrolled - partnershipSectionTop) * 0.5;
+                partnershipSection.style.backgroundPosition = `center ${partnershipParallaxOffset}px`;
+                
+                // Content parallax
+                const centerOffset = partnershipTop + (partnershipRect.height / 2) - (windowHeight / 2);
+                if (partnershipContent) {
+                    const translateY = centerOffset * 0.05;
+                    partnershipContent.style.transform = `translateY(${translateY}px)`;
+                }
+            }
+        }
     }
     
     // Throttle function for performance
