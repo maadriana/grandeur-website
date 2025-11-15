@@ -1,0 +1,329 @@
+/* footer.css */
+/* ============================
+   FOOTER / CONTACT SECTION
+   ============================ */
+
+.footer-section {
+    background-color: #2a2a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 6rem 4rem 6rem 260px !important;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* ============================================================
+   FOOTER CONTAINER
+   ============================================================ */
+.footer-container {
+    display: flex;
+    max-width: 1400px;
+    width: 100%;
+    gap: 8rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================================
+   LEFT SIDE - COMPANY INFO
+   ============================================================ */
+.footer-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Footer Logo */
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-logo > img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px !important;
+    margin-top: -70px;
+}
+
+.footer-brand-part {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.footer-brand-part:last-child {
+    margin-top: -135px !important; /* Adjust this negative value */
+}
+
+
+.footer-company-name {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.footer-company-subtitle {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    letter-spacing: 3px;
+}
+
+/* Info Blocks */
+.footer-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.footer-info-title {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-info-text {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ============================================================
+   RIGHT SIDE - CONTACT FORM
+   ============================================================ */
+.footer-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-form-container {
+    background: linear-gradient(135deg, rgba(80, 80, 80, 0.9), rgba(50, 50, 50, 0.8));
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 
+        10px 10px 30px rgba(0, 0, 0, 0.4),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-form-title {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+/* ============================================================
+   FORM STYLES
+   ============================================================ */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Fields */
+.contact-form input[type="text"],
+.contact-form input[type="tel"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 0.95rem;
+    padding: 0.8rem 0;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Select Dropdown */
+.contact-form select {
+    appearance: none;
+    background-image: none;
+    cursor: pointer;
+}
+
+.contact-form select option {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+/* Textarea */
+.contact-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Submit Button */
+.form-submit-btn {
+    align-self: center;
+    background: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    color: #ffffff;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.9rem 3rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.form-submit-btn:hover {
+    background-color: #ffffff;
+    color: #2a2a2a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .footer-section {
+        padding: 5rem 3rem 5rem 160px !important;
+    }
+    
+    .footer-container {
+        gap: 5rem;
+    }
+    
+    .contact-form-container {
+        padding: 2.5rem 2rem;
+    }
+    
+    .footer-brand-part {
+        max-width: 240px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .footer-section {
+        padding: 4rem 2rem !important;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        gap: 4rem;
+    }
+    
+    .footer-left {
+        gap: 2rem;
+    }
+    
+    .footer-logo > img {
+        width: 60px;
+    }
+    
+    .footer-brand-part {
+        max-width: 200px;
+    }
+    
+    .footer-company-name {
+        font-size: 1.5rem;
+    }
+    
+    .footer-company-subtitle {
+        font-size: 1rem;
+    }
+    
+    .footer-right {
+        justify-content: center;
+    }
+    
+    .contact-form-container {
+        max-width: 100%;
+        padding: 2rem 1.5rem;
+    }
+    
+    .contact-form-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .footer-section {
+        padding: 3rem 1rem !important;
+    }
+    
+    .footer-container {
+        gap: 3rem;
+    }
+    
+    .contact-form-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .contact-form {
+        gap: 1.2rem;
+    }
+    
+    .form-submit-btn {
+        padding: 0.8rem 2.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .footer-brand-part {
+        max-width: 180px;
+    }
+}
