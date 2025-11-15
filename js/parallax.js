@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
         aboutWatermark.style.top = '-5rem';
         aboutWatermark.style.left = '-5rem';
         aboutWatermark.style.zIndex = '999';
+        aboutWatermark.style.opacity = '0';
+        aboutWatermark.style.transition = 'opacity 0.6s ease';
     }
     
     // Hide values watermark (we'll use about watermark for both)
@@ -96,28 +98,49 @@ document.addEventListener('DOMContentLoaded', function() {
             const windowHeight = window.innerHeight;
             
             // ============================================================
-            // WATERMARK FADE EFFECT (Fades out at 30% scroll in About, fades back in for Values)
+            // WATERMARK FADE EFFECT
             // ============================================================
             const aboutWatermark = aboutSection.querySelector('.about-watermark-bg');
             if (aboutWatermark && valuesSection) {
-                const scrollProgress = Math.abs(aboutTop) / aboutRect.height;
                 const valuesRect = valuesSection.getBoundingClientRect();
                 const valuesTop = valuesRect.top;
                 
-                // Check if we're in the Values section
-                if (valuesTop <= windowHeight * 0.5) {
-                    // Fade in for Values section (smooth transition)
-                    const valueFadeProgress = Math.min(1, (windowHeight - valuesTop) / (windowHeight * 0.3));
-                    aboutWatermark.style.opacity = 0.08 * valueFadeProgress;
-                } else if (scrollProgress <= 0.3) {
-                    // Visible from 0% to 30% scroll in About
-                    aboutWatermark.style.opacity = 0.08;
-                } else if (scrollProgress > 0.3 && scrollProgress <= 0.5) {
-                    // Fade out from 30% to 50% in About
-                    const fadeProgress = (scrollProgress - 0.3) / 0.2;
-                    aboutWatermark.style.opacity = 0.08 * (1 - fadeProgress);
-                } else {
-                    // Hidden between About (50%) and Values sections
+                // Values section
+                if (valuesTop < windowHeight && valuesTop > -valuesRect.height) {
+                    // Entering from top
+                    if (valuesTop > windowHeight * 0.5) {
+                        const progress = (windowHeight - valuesTop) / (windowHeight * 0.5);
+                        aboutWatermark.style.opacity = 0.08 * progress;
+                    }
+                    // In view
+                    else if (valuesTop <= windowHeight * 0.5 && valuesTop > -valuesRect.height + windowHeight * 0.3) {
+                        aboutWatermark.style.opacity = 0.08;
+                    }
+                    // Leaving from bottom
+                    else {
+                        const progress = (valuesRect.height + valuesTop) / (windowHeight * 0.3);
+                        aboutWatermark.style.opacity = 0.08 * Math.max(0, progress);
+                    }
+                }
+                // About section
+                else if (aboutTop < windowHeight && aboutTop > -aboutRect.height) {
+                    // Entering from top
+                    if (aboutTop > windowHeight * 0.5) {
+                        const progress = (windowHeight - aboutTop) / (windowHeight * 0.5);
+                        aboutWatermark.style.opacity = 0.08 * progress;
+                    }
+                    // In view
+                    else if (aboutTop <= windowHeight * 0.5 && aboutTop > -aboutRect.height + windowHeight * 0.3) {
+                        aboutWatermark.style.opacity = 0.08;
+                    }
+                    // Leaving from bottom
+                    else {
+                        const progress = (aboutRect.height + aboutTop) / (windowHeight * 0.3);
+                        aboutWatermark.style.opacity = 0.08 * Math.max(0, progress);
+                    }
+                }
+                // Outside both sections
+                else {
                     aboutWatermark.style.opacity = 0;
                 }
             }
