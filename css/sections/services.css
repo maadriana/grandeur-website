@@ -1,0 +1,331 @@
+/* ============================
+   SERVICES SECTION
+   ============================ */
+
+.services-section {
+    background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 6rem 4rem 6rem 260px !important;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+.services-header {
+    text-align: left;
+    max-width: 1200px;
+    width: 100%;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 4s ease, transform 4s ease;
+}
+
+.services-header.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.services-title {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-size: 6rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-transform: lowercase;
+}
+
+.services-description {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: left;
+    max-width: 1000px;
+}
+
+/* ============================================================
+   SERVICES GRID
+   ============================================================ */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Card positioning and sizing to match prototype */
+/* You can adjust min-height and padding for each card individually */
+
+.service-card:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    min-height: 400px; 
+}
+
+.service-card:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    min-height: 200px;
+}
+
+.service-card:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1;
+    min-height: 200px;
+}
+
+.service-card:nth-child(4) {
+    grid-column: 1;
+    grid-row: 3;
+    min-height: 260px;
+}
+
+.service-card:nth-child(5) {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    min-height: 400px;  
+}
+
+.service-card:nth-child(6) {
+    grid-column: 3;
+    grid-row: 2 / 4;
+    min-height: 400px;  /* Reduced by 20px from 420px */
+}
+
+/* ============================================================
+   SERVICE CARDS
+   ============================================================ */
+.service-card {
+    background: linear-gradient(135deg, rgba(90, 90, 90, 0.95) 0%, rgba(40, 40, 40, 0.95) 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 1.2s ease, box-shadow 1.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        10px 10px 25px rgba(0, 0, 0, 0.5),
+        -5px -5px 15px rgba(80, 80, 80, 0.1),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.05),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.service-card:hover::before {
+    opacity: 0.7;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+        15px 15px 35px rgba(0, 0, 0, 0.6),
+        -8px -8px 20px rgba(80, 80, 80, 0.15),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.08),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Highlighted Card (04 - Brand Development) */
+.service-card-highlight {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(230, 230, 230, 1) 100%);
+    box-shadow: 
+        10px 10px 25px rgba(0, 0, 0, 0.4),
+        -5px -5px 15px rgba(255, 255, 255, 0.3),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.8),
+        inset -2px -2px 5px rgba(200, 200, 200, 0.5);
+}
+
+.service-card-highlight::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 50%, rgba(200, 200, 200, 0.2) 100%);
+}
+
+.service-card-highlight:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(240, 240, 240, 1) 100%);
+    box-shadow: 
+        15px 15px 35px rgba(0, 0, 0, 0.5),
+        -8px -8px 20px rgba(255, 255, 255, 0.4),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.9),
+        inset -2px -2px 5px rgba(200, 200, 200, 0.6);
+}
+
+/* Service Number */
+.service-number {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+}
+
+.service-card-highlight .service-number {
+    color: #1a1a1a;
+}
+
+/* Service Title */
+.service-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.service-card-highlight .service-title {
+    color: #1a1a1a;
+}
+
+/* ============================================================
+   PARALLAX CLASSES
+   ============================================================ */
+.parallax-slow {
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.parallax-normal {
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .services-section {
+        padding: 4rem 3rem 4rem 160px !important;
+    }
+    
+    .services-title {
+        font-size: 4rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        min-height: 240px;
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .service-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .services-section {
+        padding: 3rem 2rem !important;
+    }
+    
+    .services-header {
+        margin-bottom: 3rem;
+    }
+    
+    .services-title {
+        font-size: 3rem;
+    }
+    
+    .services-description {
+        font-size: 0.95rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        min-height: 200px;
+        padding: 2rem 1.5rem;
+    }
+    
+    .service-number {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .service-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .services-section {
+        padding: 2.5rem 1rem !important;
+    }
+    
+    .services-title {
+        font-size: 2.5rem;
+    }
+    
+    .service-card {
+        min-height: 180px;
+        padding: 1.5rem 1rem;
+    }
+    
+    .service-number {
+        font-size: 1.8rem;
+    }
+    
+    .service-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* ============================================================
+   HOVER ANIMATIONS
+   ============================================================ */
+.service-card {
+    position: relative;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::after {
+    transform: scaleX(1);
+}
+
+.service-card-highlight::after {
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.2), transparent);
+}

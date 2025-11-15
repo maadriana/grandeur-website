@@ -5,8 +5,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ============================================================
-    // FIXED WATERMARK WITH IMAGE SWITCH
+    // FIXED WATERMARK WITH IMAGE SWITCH - COMMENTED OUT
     // ============================================================
+    /*
     const aboutWatermark = document.querySelector('.about-watermark-bg');
     const valuesWatermark = document.querySelector('.values-watermark-bg');
     
@@ -24,14 +25,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (valuesWatermark) {
         valuesWatermark.style.display = 'none';
     }
+    */
     
     // Parallax scroll effect
     function parallaxScroll() {
         const scrolled = window.pageYOffset;
         
         // ============================================================
-        // WATERMARK IMAGE SWITCH (black → white)
+        // WATERMARK IMAGE SWITCH (black → white) - COMMENTED OUT
         // ============================================================
+        /*
         const aboutWatermark = document.querySelector('.about-watermark-bg');
         const watermarkImg = aboutWatermark ? aboutWatermark.querySelector('img') : null;
         
@@ -50,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+        */
         
         // Hero parallax effect
         const heroSection = document.querySelector('.hero-section');
@@ -98,50 +102,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const windowHeight = window.innerHeight;
             
             // ============================================================
-            // WATERMARK FADE EFFECT
+            // WATERMARK FADE EFFECT - About section only
             // ============================================================
             const aboutWatermark = aboutSection.querySelector('.about-watermark-bg');
-            if (aboutWatermark && valuesSection) {
-                const valuesRect = valuesSection.getBoundingClientRect();
-                const valuesTop = valuesRect.top;
-                
-                // Values section
-                if (valuesTop < windowHeight && valuesTop > -valuesRect.height) {
-                    // Entering from top
-                    if (valuesTop > windowHeight * 0.5) {
-                        const progress = (windowHeight - valuesTop) / (windowHeight * 0.5);
-                        aboutWatermark.style.opacity = 0.08 * progress;
-                    }
-                    // In view
-                    else if (valuesTop <= windowHeight * 0.5 && valuesTop > -valuesRect.height + windowHeight * 0.3) {
-                        aboutWatermark.style.opacity = 0.08;
-                    }
-                    // Leaving from bottom
-                    else {
-                        const progress = (valuesRect.height + valuesTop) / (windowHeight * 0.3);
-                        aboutWatermark.style.opacity = 0.08 * Math.max(0, progress);
-                    }
-                }
-                // About section
-                else if (aboutTop < windowHeight && aboutTop > -aboutRect.height) {
-                    // Entering from top
-                    if (aboutTop > windowHeight * 0.5) {
-                        const progress = (windowHeight - aboutTop) / (windowHeight * 0.5);
-                        aboutWatermark.style.opacity = 0.08 * progress;
-                    }
-                    // In view
-                    else if (aboutTop <= windowHeight * 0.5 && aboutTop > -aboutRect.height + windowHeight * 0.3) {
-                        aboutWatermark.style.opacity = 0.08;
-                    }
-                    // Leaving from bottom
-                    else {
-                        const progress = (aboutRect.height + aboutTop) / (windowHeight * 0.3);
-                        aboutWatermark.style.opacity = 0.08 * Math.max(0, progress);
-                    }
-                }
-                // Outside both sections
-                else {
-                    aboutWatermark.style.opacity = 0;
+            if (aboutWatermark) {
+                // Progressive fade-in when entering About section
+                if (aboutTop < windowHeight * 0.8) {
+                    const fadeProgress = Math.min(1, (windowHeight * 0.8 - aboutTop) / 300);
+                    aboutWatermark.style.opacity = 0.08 * fadeProgress;
+                } else {
+                    aboutWatermark.style.opacity = '0';
                 }
             }
             
@@ -267,6 +237,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.style.transform = 'translateY(30px)';
             }
         });
+        
+        // ============================================================
+        // SERVICES SECTION PARALLAX
+        // ============================================================
+        const servicesSection = document.querySelector('.services-section');
+        if (servicesSection) {
+            const servicesRect = servicesSection.getBoundingClientRect();
+            const servicesTop = servicesRect.top;
+            const windowHeight = window.innerHeight;
+            
+            // Fade in header
+            const servicesHeader = servicesSection.querySelector('.services-header');
+            if (servicesHeader && servicesTop < windowHeight * 0.8) {
+                servicesHeader.classList.add('fade-in-up');
+            }
+            
+            if (servicesTop < windowHeight && servicesTop > -servicesRect.height) {
+                const centerOffset = servicesTop + (servicesRect.height / 2) - (windowHeight / 2);
+                
+                // Parallax for service cards - alternating speeds
+                const slowCards = servicesSection.querySelectorAll('.service-card.parallax-slow');
+                slowCards.forEach(card => {
+                    const translateY = centerOffset * 0.08;
+                    card.style.transform = `translateY(${translateY}px)`;
+                });
+                
+                const normalCards = servicesSection.querySelectorAll('.service-card.parallax-normal');
+                normalCards.forEach(card => {
+                    const translateY = centerOffset * 0.04;
+                    card.style.transform = `translateY(${translateY}px)`;
+                });
+                
+                // Fade in effect
+                const fadeInThreshold = windowHeight * 0.75;
+                if (servicesTop < fadeInThreshold) {
+                    servicesSection.style.opacity = '1';
+                } else {
+                    servicesSection.style.opacity = '0.5';
+                }
+                servicesSection.style.transition = 'opacity 0.6s ease';
+            }
+        }
     }
     
     // Throttle function for performance

@@ -74,13 +74,14 @@
    WATERMARK LOGO - TOP LEFT (logo.png for black background)
    SAME POSITION AS ABOUT SECTION
    ============================================================ */
+/* COMMENTED OUT - Watermark removed from HTML
 .values-watermark-bg {
     position: absolute;
     top: -5rem;
     left: -5rem;
     width: 28rem;
     height: 28rem;
-    opacity: 0.08 !important;  /* Always visible */
+    opacity: 0.08 !important;
     z-index: 2;
     pointer-events: none;
 }
@@ -89,8 +90,9 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: brightness(0) invert(1);  /* White logo for dark background */
+    filter: brightness(0) invert(1);
 }
+*/
 
 /* ============================================================
    TAGLINE AT TOP
